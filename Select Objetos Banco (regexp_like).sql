@@ -1,0 +1,1 @@
+select distinct name from all_source where regexp_like (text, 'nome_da_funcao_ou_palavra_chave', 'i')
