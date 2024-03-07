@@ -2,11 +2,11 @@ CREATE OR REPLACE PROCEDURE BANCO.procedure_exportar_clob_txt IS
 DECLARE
     v_clob CLOB;
     v_file UTL_FILE.FILE_TYPE;
-    v_directory VARCHAR2(100) := 'DIRETORIO'; -- Diretório onde o arquivo será salvo
-    v_filename VARCHAR2(100) := 'arquivoclob.txt'; -- Nome do arquivo de saída
+    v_directory VARCHAR2(100) := 'DIRETORIO'; -- DiretÃ³rio onde o arquivo serÃ¡ salvo
+    v_filename VARCHAR2(100) := 'arquivoclob.txt'; -- Nome do arquivo de saÃ­da
     v_buffer VARCHAR2(200);
     v_offset NUMBER := 1;
-    v_chunk_size NUMBER := 200;--Define o maximo de 200 carac. por linha (limitação do arquivo txt)
+    v_chunk_size NUMBER := 200;--Define o maximo de 200 carac. por linha (limitaÃ§Ã£o do arquivo txt)
 BEGIN
     --Busca o campo CLOB para exportar
     SELECT DESCRICAO 
@@ -18,10 +18,10 @@ BEGIN
 
     -- Loop para processar a CLOB e gravar no arquivo
     LOOP
-        -- Lê um pedaço da CLOB
+        -- LÃª um pedaÃ§o da CLOB
         DBMS_LOB.READ(v_clob, v_chunk_size, v_offset, v_buffer);
 
-        -- Verifica se ainda há conteúdo a ser lido
+        -- Verifica se ainda hÃ¡ conteÃºdo a ser lido
         IF LENGTH(v_buffer) = 0 THEN
             EXIT;
         END IF;
